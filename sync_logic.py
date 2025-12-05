@@ -5,13 +5,13 @@ from trello_client import create_card, move_card, get_cards
 
 GRACE_SECONDS = int(os.getenv("SYNC_GRACE_SECONDS", "30"))
 
-# Read Trello list IDs from .env
+# Read trello list IDs from .env
 LIST_TODO = os.getenv("TRELLO_LIST_TODO")
 LIST_INPROGRESS = os.getenv("TRELLO_LIST_INPROGRESS")
 LIST_DONE = os.getenv("TRELLO_LIST_DONE")
 LIST_LOST = os.getenv("TRELLO_LIST_LOST")
 
-# Map ID to Status
+# Map id to Status
 LIST_TO_STATUS = {
     LIST_TODO: "New",
     LIST_INPROGRESS: "Contacted",
