@@ -129,24 +129,39 @@ def set_trello_card_id(page_id, card_id):
     return r.json()
 
 
-def update_lead_status(page_id, new_status):
-    """Update the Status property of a Notion page."""
-    """Tries 'select' first, then 'status' if select fails (resilient)."""
-    """Returns JSON response or None."""
-    url = f"{BASE}/pages/{page_id}"
-    body_select = {"properties": {"Status": {"select": {"name": new_status}}}}
-    body_status = {"properties": {"Status": {"status": {"name": new_status}}}}
-
-    # Try select style first
-    r = safe_request("PATCH", url, headers=HEADERS, json=body_select)
-    if r and r.status_code < 400:
-        return r.json()
-
-    # Fallback to status style
-    r2 = safe_request("PATCH", url, headers=HEADERS, json=body_status)
-    if not r2:
+def _get_property_type(prop_name="Status"):
+    """Inspect the Notion database schema and return the property type for `prop_name`."""
+    """Returns one of: "select", "status", "rich_text", None"""
+    url = f"{BASE}/databases/{DATABASE_ID}"
+    r = safe_request("GET", url, headers=HEADERS)
+    if not r:
         return None
-    return r2.json()
+    schema = r.json().get("properties", {})
+    prop = schema.get(prop_name, {})
+    # Notion property object contains a single key like "select" or "status"
+    for k in ("select", "status", "rich_text", "text", "date"):
+        if k in prop:
+            return k
+    return None
+
+
+def update_lead_status(page_id, new_status):
+    """Update the Status property of a Notion page using the DB's actual property type."""
+    prop_type = _get_property_type("Status")
+
+    if prop_type == "select":
+        body = {"properties": {"Status": {"select": {"name": new_status}}}}
+    elif prop_type == "status":
+        body = {"properties": {"Status": {"status": {"name": new_status}}}}
+    else:
+        # Fallback: try setting as rich_text (least intrusive)
+        body = {"properties": {"Status": {"rich_text": [{"text": {"content": new_status}}]}}}
+
+    url = f"{BASE}/pages/{page_id}"
+    r = safe_request("PATCH", url, headers=HEADERS, json=body)
+    if not r:
+        return None
+    return r.json()
 
 
 def create_lead(name, email=None, status="New", source=None):
