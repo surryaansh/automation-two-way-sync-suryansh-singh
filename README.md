@@ -18,8 +18,6 @@ Built in Python using real REST APIs. Created as part of the DeepLogic AI Automa
 
 Notion Leads  <------>  sync_logic.py  <------>  Trello Tasks
    (API)                     |                      (API)
-                             +  
-               Timestamp comparison + mapping
 
 | Notion Status | Trello List |
 | ------------- | ----------- |
