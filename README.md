@@ -52,23 +52,23 @@ git clone https://github.com/surryaansh/automation-two-way-sync-suryansh-singh
 - Get list IDs by opening board JSON (simply add “.json” at the end of the url on boards webpage
 
 ## 4️⃣ Create .env
-NOTION_TOKEN=xxx
-NOTION_DATABASE_ID=xxx
-TRELLO_KEY=xxx
-TRELLO_TOKEN=xxx
-TRELLO_BOARD_ID=xxx
-TRELLO_LIST_TODO=xxx
-TRELLO_LIST_INPROGRESS=xxx
-TRELLO_LIST_DONE=xxx
-TRELLO_LIST_LOST=xxx
+- NOTION_TOKEN=xxx
+- NOTION_DATABASE_ID=xxx
+- TRELLO_KEY=xxx
+- TRELLO_TOKEN=xxx
+- TRELLO_BOARD_ID=xxx
+- TRELLO_LIST_TODO=xxx
+- TRELLO_LIST_INPROGRESS=xxx
+- TRELLO_LIST_DONE=xxx
+- TRELLO_LIST_LOST=xxx
 
 ## 5️⃣ Install deps
 pip install -r requirements.txt
 
 # ▶️ Running the Sync
-python3 main.py
+## python3 main.py
 
-Example Output:
+### Example Output:
 
 Running sync...
 [Decision] Trello Update is newer for 'Test_Name'
