@@ -1,5 +1,3 @@
-# trello_client.py (minimal + clean)
-
 import os, requests
 from dotenv import load_dotenv
 
@@ -17,6 +15,7 @@ LIST_LOST = os.getenv("TRELLO_LIST_LOST")
 BASE = "https://api.trello.com/1"
 
 def get_cards():
+    """Get Cards"""
     url = f"{BASE}/boards/{TRELLO_BOARD_ID}/cards"
     params = {"key": TRELLO_KEY, "token": TRELLO_TOKEN}
     r = requests.get(url, params=params)
@@ -24,6 +23,7 @@ def get_cards():
     return r.json()
 
 def create_card(name, lead_id):
+    """Create Trello Cards"""
     url = f"{BASE}/cards"
     params = {
         "key": TRELLO_KEY,
@@ -37,6 +37,7 @@ def create_card(name, lead_id):
     return r.json().get("id")
 
 def move_card(card_id, new_status):
+    """Moving Trello card"""
     status_map = {
         "New": LIST_TODO,
         "Contacted": LIST_INPROGRESS,

@@ -1,5 +1,3 @@
-# notion_client.py (minimal + clean)
-
 import os, requests
 from dotenv import load_dotenv
 
@@ -74,7 +72,7 @@ def set_trello_card_id(page_id, card_id):
     return r.json()
 
 def update_lead_status(page_id, new_status):
-    """Update Notion status (supports both select and status types)."""
+    """Update Notion status."""
     url = f"{BASE}/pages/{page_id}"
 
     # Try select
