@@ -5,18 +5,29 @@ Built in Python using real REST APIs. Created as part of the DeepLogic AI Automa
 
 📌 Overview
 
-Lead Tracker: Notion database
+- Lead Tracker: Notion database
+- Work Tracker: Trello board
+- When a Notion lead is created → a Trello task is created
+- When lead status changes → Trello card moves to correct list
+- When Trello card moves → Notion lead status updates
+- No duplicates (idempotent)
+- Uses timestamp comparison + small grace window
+- Includes error handling, retry logic, logging
 
-Work Tracker: Trello board
+🏗 Architecture
 
-When a Notion lead is created → a Trello task is created
+Notion Leads  <------>  sync_logic.py  <------>  Trello Tasks
+   (API)                     |                      (API)
+                             +  
+               Timestamp comparison + mapping
 
-When lead status changes → Trello card moves to correct list
+| Notion Status | Trello List |
+| ------------- | ----------- |
+| New           | To Do       |
+| Contacted     | In Progress |
+| Qualified     | Done        |
+| Lost          | Lost        |
 
-When Trello card moves → Notion lead status updates
 
-No duplicates (idempotent)
 
-Uses timestamp comparison + small grace window
 
-Includes error handling, retry logic, logging
