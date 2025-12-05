@@ -28,11 +28,11 @@ Notion Leads  <------>  sync_logic.py  <------>  Trello Tasks
 
 📁 Project Structure
 
-- notion_client.py: # Notion API wrapper
-- trello_client.py: # Trello API wrapper
-- sync_logic.py:    # Two-way sync logic + decisions
-- main.py:          # Entry point
-- .env.example: # Sample env file
+- notion_client.py
+- trello_client.py
+- sync_logic.py (Two-way sync logic + decisions)
+- main.py
+- .env.example
 - requirements.txt
 
 
