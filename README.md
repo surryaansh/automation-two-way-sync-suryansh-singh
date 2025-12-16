@@ -43,7 +43,7 @@ git clone https://github.com/surryaansh/automation-two-way-sync-suryansh-singh
 
 ## 2️⃣ Notion Setup
 - Create an Internal Integration at https://www.notion.so/my-integrations
-- Copy token → share your database with it
+- Copy token and share your database with it (from the Access Tab)
 - Copy Notion database ID from the URL
 
 ## 3️⃣ Trello Setup
