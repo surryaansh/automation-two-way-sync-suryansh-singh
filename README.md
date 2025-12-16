@@ -98,7 +98,7 @@ Sync done.
 # 🤖 AI Usage Notes
 Used ChatGPT for:
 
-- Mostly used for understanding how and where to find API + secret + token keys for Trello (I'm new to Trello).
+- Mostly used for understanding how and where to find API + secret + token keys for Trello.
 - To find List IDs by adding .json at the URL end
 - Creating API Error Handling wrapper for notion and trello client
 - Understanding timestamp loopholes and fixing errors
