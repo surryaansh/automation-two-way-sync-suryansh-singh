@@ -17,7 +17,7 @@ Built in Python using real REST APIs. Created as part of the DeepLogic AI's "Sof
 # 🏗 Architecture
 
 Notion Leads  <------>  sync_logic.py  <------>  Trello Tasks
-   (API)                     |                      (API)
+                        |                      
 
 | Notion Status | Trello List |
 | ------------- | ----------- |
