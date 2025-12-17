@@ -7,9 +7,9 @@ Built in Python using real REST APIs.
 
 - Lead Tracker: Notion database
 - Work Tracker: Trello board
-- When a Notion lead is created → a Trello task is created
-- When lead status changes → Trello card moves to correct list
-- When Trello card moves → Notion lead status updates
+- When a Notion lead is created -> a Trello task is created
+- When lead status changes -> Trello card moves to correct list
+- When Trello card moves -> Notion lead status updates
 - No duplicates (idempotent)
 - Uses timestamp comparison + small grace window
 - Includes error handling, retry logic, logging
