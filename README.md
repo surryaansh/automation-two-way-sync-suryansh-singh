@@ -1,7 +1,7 @@
 # 🚀 Notion ↔ Trello Two-Way Sync
 
 A reliable automation system that keeps Notion leads and Trello tasks in a continuous two-way sync.
-Built in Python using real REST APIs.
+Built in Python using real, multiple REST APIs.
 
 # 📌 Overview
 
